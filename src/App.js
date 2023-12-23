@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import DataDisplay from './components/DataDisplay';
 
 function App() {
+  const [displayMode, setDisplayMode] = useState('group-by-status');
+  const [darkTheme, setDarkTheme] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`${darkTheme ? 'dark-theme' : 'light-theme'}`}>
+      <Navbar displayMode={displayMode} setDisplayMode={setDisplayMode} />
+      <DataDisplay displayMode={displayMode} />
     </div>
   );
 }
